@@ -1,7 +1,6 @@
 #include "TextQuery.h"
 
-void runQueries(std::ifstream& f)
-{
+void runQueries(std::ifstream& f) {
     TextQuery tq(f);
     while (true) {
         std::cout << "Enter a word to lookup, or q for quiting." << std::endl;
@@ -14,8 +13,7 @@ void runQueries(std::ifstream& f)
     }
 }
 
-int main(int argc, char const* argv[])
-{
+int main(int argc, char const* argv[]) {
     std::ifstream f("hamlet.txt");
     runQueries(f);
     return 0;
