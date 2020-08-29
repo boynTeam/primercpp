@@ -29,8 +29,7 @@ void print_vector_shared(std::shared_ptr<std::vector<std::string>> vec_shared) {
     }
 }
 
-int main(int argc, char const* argv[])
-{
+int main(int argc, char const* argv[]) {
     std::vector<std::string>* vec = new std::vector<std::string>();
     read_in_vector_ptr(vec);
     print_vector_ptr(vec);

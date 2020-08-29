@@ -14,7 +14,8 @@ class QueryResult {
 public:
     QueryResult(std::string s,
         std::shared_ptr<std::vector<std::string>> f,
-        std::shared_ptr<std::set<int>> p) : word(s), lines(p), file(f) {}
+        std::shared_ptr<std::set<int>> p) : word(s), lines(p), file(f) {
+    }
 
 private:
     std::string word;
