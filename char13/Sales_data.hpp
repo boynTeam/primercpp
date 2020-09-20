@@ -11,6 +11,7 @@ public:
     Sales_data(const std::string& s) : bookNo(s) {};
     Sales_data(const std::string& s, unsigned n, double p) : bookNo(s), units_sold(n), revenue(p* n) {};
     Sales_data(std::istream&);
+    Sales_data(const Sales_data& ori) :bookNo(ori.bookNo), units_sold(ori.units_sold), revenue(ori.revenue) {};
     std::string isbn() const { return this->bookNo; }
     Sales_data& combine(const Sales_data&);
 
