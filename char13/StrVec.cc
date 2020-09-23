@@ -19,3 +19,36 @@ void StrVec::free() {
         alloc.deallocate(elements, cap - elements);
     }
 }
+
+StrVec::StrVec(const StrVec& s) {
+    auto newdata = alloc_n_copy(s.begin(), s.end());
+    this->elements = newdata.first;
+    this->first_free = this->cap = newdata.second;
+}
+
+StrVec::~StrVec() {
+    free();
+}
+
+StrVec& StrVec::operator=(const StrVec& rhs) {
+    auto data = alloc_n_copy(rhs.begin(), rhs.end());
+    free();
+    elements = data.first;
+    this->elements = data.first;
+    this->first_free = this->cap = data.second;
+    return *this;
+}
+
+void StrVec::reallocate() {
+    auto newcapacity = size() ? 2 * size() : 1;
+    auto newdata = alloc.allocate(newcapacity);
+    auto dest = newdata;
+    auto elem = elements;
+    for (size_t i = 0;i != size(); i++) {
+        alloc.construct(dest++, std::move(*elem++));
+    }
+    free();
+    elements = newdata;
+    first_free = dest;
+    cap = elements + newcapacity;
+}

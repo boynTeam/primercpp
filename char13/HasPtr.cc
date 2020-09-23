@@ -10,8 +10,8 @@ public:
         i = 0;
     }
     HasPtr& operator=(const HasPtr& ptr) {
-        delete this->ps;
         this->ps = new std::string(*ptr.ps);
+        delete this->ps;
         this->i = ptr.i;
         return *this;
     }
